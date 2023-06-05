@@ -1,12 +1,16 @@
 <div id="<%= dom_id job %>">
-  <p>
-    <strong>Title:</strong>
-    <%= job.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
+  <div class="mb-4">
+    <h6 class="fw-bold m-0">Titulo</h6>
+    <h5>
+      <%= content_tag :h4, job.title, class: "fw-bold" %>
+    </h5>
+    <p style="font-size: 14px;">Creado: <%= job.created_at.strftime("%d/%m/%Y") %></p>
+  </div>
+  <hr>
+  <h6 class="fw-bold">
+    Descripción
+  </h6>
+  <p class="mb-5">
     <%= job.description %>
   </p>
-
 </div>

@@ -8,11 +8,11 @@
 </div>
 
 <div id="jobs" class="row">
-  <% @jobs.each do |job| %>
+  <% @jobs.order(created_at: :desc).each do |job| %>
     <div class="col-md-4">
       <div class="card p-4 mb-4 custom-container">
         <%= render job %>
-          <%= link_to "Ver Empleo", job, class: "btn btn-primary" %>
+        <%= link_to "Ver Empleo", job, class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
