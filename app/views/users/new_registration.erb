@@ -3,7 +3,7 @@
     <div class="card-body">
       <h2>Crear nuevo usuario</h2>
 
-      <%= form_for(User.new, url: new_registration_path, html: { method: :post }) do |f| %>
+      <%= form_for(User.new, url: create_registration_path, html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: f.object %>
 
         <div class="mb-4 form-group">

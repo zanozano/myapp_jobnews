@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' } 
   
+  post 'users/new_registration', to: 'users/registrations#create', as: 'create_registration'
   get 'users/new_registration', to: 'users#new_registration', as: 'new_registration'
 
   resources :users do
