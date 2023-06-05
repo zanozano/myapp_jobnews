@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    redirect_to profile_path(current_user.profile)
   end
 
   def new
@@ -15,7 +16,8 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = current_user.build_profile(profile_params)
+    @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
 
     if @profile.save
       redirect_to profiles_path, notice: 'Profile was successfully created.'
@@ -27,13 +29,18 @@ class ProfilesController < ApplicationController
   def edit
   end
 
-  def update
-    if @profile.update(profile_params)
-      redirect_to profiles_path, notice: 'Profile was successfully updated.'
-    else
-      render :edit
-    end
+def update
+  @profile = Profile.find_by(id: params[:profile][:id])
+
+  if @profile.update(profile_params)
+    puts "Update action executed successfully!" # Mensaje de prueba
+    redirect_to profiles_path, notice: 'Profile was successfully updated.'
+  else
+    render :edit
   end
+end
+
+
 
   def destroy
     @profile.destroy
@@ -43,7 +50,7 @@ class ProfilesController < ApplicationController
   private
 
   def set_profile
-    @profile = Profile.find(params[:id])
+    @profile = current_user.profile
   end
 
   def profile_params

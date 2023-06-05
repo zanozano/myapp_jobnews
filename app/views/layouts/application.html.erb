@@ -20,9 +20,9 @@
         <ul class="navbar-nav ms-auto">
           <% if user_signed_in? %>
             <% if current_user && current_user.admin? %>
-            <li>
-              <a class="nav-link <%= 'active' if current_page?(new_user_registration_path) %>" href="<%= new_user_registration_path %>">Registrar Usuario</a>
-            </li>
+              <li>
+<a class="nav-link <%= 'active' if current_page?(new_registration_path) %>" href="<%= new_registration_path %>">Registrar Usuario</a>
+              </li>
             <% end %>
             <li>
               <a class="nav-link <%= 'active' if current_page?(profiles_path) %>" href="<%= profiles_path %>" <%= 'aria-current="page"' if current_page?(profiles_path) %>>Perfil</a>
