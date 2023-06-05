@@ -1,9 +1,15 @@
-<h1>New job</h1>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card custom-container-log col-12 col-lg-4">
+    <div class="card-body">
+      <h2 class="text-center fw-bold mb-3">Crear Empleo</h2>
+      <hr>
+      
+      <%= render "form", job: @job %>
 
-<%= render "form", job: @job %>
-
-<br>
-
-<div>
-  <%= link_to "Back to jobs", jobs_path %>
+      <hr>
+      <div class="d-flex gap-2">
+        <%= link_to "Volver", jobs_path, class: "btn btn-outline-primary" %>
+      </div>
+    </div>
+  </div>
 </div>

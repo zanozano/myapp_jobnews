@@ -15,6 +15,12 @@
  */
 @import "bootstrap";
 
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .custom-container {
     border: 2px solid #c0c0c0;
     border-radius: 8px;
@@ -25,6 +31,11 @@
 }.custom-container:hover {
     background: #ffd798;
     cursor: pointer;
-
 }
 
+.custom-container-log {
+    border-radius: 8px;
+    background: #e0e0e0;
+    box-shadow:  20px 20px 60px #bebebe,
+                -20px -20px 60px #ffffff;
+}

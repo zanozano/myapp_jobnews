@@ -1,6 +1,6 @@
 <%= form_with(model: job) do |form| %>
   <% if job.errors.any? %>
-    <div style="color: red">
+    <div class="alert alert-danger">
       <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-4">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "Agregue el titulo del empleo" %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="mb-4">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", placeholder: "Agregue descripción del empleo" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mb-4">
+    <%= form.submit "Crear", class: "btn btn-primary" %>
   </div>
 <% end %>
