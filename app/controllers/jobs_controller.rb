@@ -15,14 +15,14 @@ class JobsController < ApplicationController
   def edit
   end
 
-def apply
-  @job = Job.find(params[:id])
-  current_user.jobs << @job
-  redirect_to profile_path(current_user.profile), notice: 'Empleo aplicado exitosamente.'
-end
+  def apply
+    @job = Job.find(params[:id])
+    current_user.jobs << @job
+    redirect_to profile_path(current_user.profile), notice: 'Empleo aplicado exitosamente.'
+  end
 
   def create
-    @job = Job.new(job_params)
+    @job = current_user.jobs.build(job_params)
 
     respond_to do |format|
       if @job.save

@@ -18,14 +18,11 @@ User.create!(
   admin: false
 )
 
-# Crea 10 empleos falsos asociados a un usuario
-User.all.each do |user|
-  10.times do
-    title = Faker::Job.title
-    description = Faker::Lorem.paragraph(sentence_count: 2)
-    job = Job.new(title: title, description: description)
-    job.user = user
-    job.save
-  end
+# Crea 10 empleos falsos sin asignar un usuario
+10.times do
+  title = Faker::Job.title
+  description = Faker::Lorem.paragraph(sentence_count: 2)
+  job = Job.new(title: title, description: description)
+  job.save
 end
 
