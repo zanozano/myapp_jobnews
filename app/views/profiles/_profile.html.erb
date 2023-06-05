@@ -1,7 +1,18 @@
-<div id="<%= dom_id profile %>">
-  <p>
-    <strong>Show:</strong>
-    <%= profile.show %>
-  </p>
-
+<div id="<%= dom_id(profile) %>">
+<div class="text-center my-4">
+  <%= image_tag profile.profile_photo.url, class: "rounded-circle img-fluid" %>
 </div>
+
+  <div class="mb-3">
+    <h5 class="m-0">Usuario</h5>
+    <h4 class="fw-bold">
+      <%= profile.user.name %>
+    </h4>
+  </div>
+
+  <h6>Sobre Mí</h6>
+  <p>
+    <%= profile.description %>
+  </p>
+</div>
+

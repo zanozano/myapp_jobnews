@@ -1,14 +1,59 @@
-<p style="color: green"><%= notice %></p>
+<div class="d-flex justify-content-center align-items-top gap-4">
+  <div class="card custom-container-log col-6 col-lg-5">
+    <div class="card-body">
+      <% if notice.present? %>
+        <div class="alert alert-success" role="alert" id="success-message">
+          <p class="text-center" style="color: green"><%= notice %></p>
+        </div>
+        <script>
+          setTimeout(function() {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+              successMessage.style.display = 'none';
+            }
+          }, 8000);
+        </script>
+      <% end %>
 
-<h1>Profiles</h1>
+      <h2 class="text-center fw-bold">Mi perfil</h2>
 
-<div id="profiles">
-  <% @profiles.each do |profile| %>
-    <%= render profile %>
-    <p>
-      <%= link_to "Show this profile", profile %>
-    </p>
-  <% end %>
+      <div id="profiles">
+        <% if @profiles.any? %>
+          <% @profiles.each do |profile| %>
+            <%= render profile %>
+          <% end %>
+        <% else %>
+          <p>Aun no has actualizado tu perfil.</p>
+        <% end %>
+      </div>
+
+      <hr>
+
+      <% if Profile.exists? %>
+        <%= link_to "Editar Perfil", edit_profile_path(Profile.first), class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to "Crear Perfil", new_profile_path, class: "btn btn-success" %>
+      <% end %>
+
+      <%= link_to "Volver", root_path, class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+
+  <div class="card custom-container-log col-6 col-lg-5">
+    <div class="card-body">
+          <h2 class="text-center fw-bold">Mis empleos</h2>
+<% if @user_jobs.present? %>
+  <!-- Mostrar la lista de empleos -->
+  <ul>
+    <% @user_jobs.each do |job| %>
+      <li><%= job.title %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <!-- Mostrar mensaje de validación -->
+  <p>No tienes empleos guardados en tu lista.</p>
+<% end %>
+
+    </div>
+  </div>
 </div>
-
-<%= link_to "New profile", new_profile_path %>

@@ -25,6 +25,9 @@
             </li>
             <% end %>
             <li>
+              <a class="nav-link <%= 'active' if current_page?(profiles_path) %>" href="<%= profiles_path %>" <%= 'aria-current="page"' if current_page?(profiles_path) %>>Perfil</a>
+            </li>
+            <li>
               <%= button_to "Cerrar Sesion", destroy_user_session_path, method: :delete, class: "nav-link btn btn-link" %>
             </li>
           <% else %>

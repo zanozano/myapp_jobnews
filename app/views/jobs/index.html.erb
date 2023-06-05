@@ -1,4 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<% if notice.present? %>
+        <div class="alert alert-success" role="alert" id="success-message">
+          <p class="text-center" style="color: green"><%= notice %></p>
+        </div>
+        <script>
+          setTimeout(function() {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+              successMessage.style.display = 'none';
+            }
+          }, 8000);
+        </script>
+      <% end %>
 
 <div class="mb-3 d-inline-block">
   <h2 class="d-inline-block align-middle me-3 fw-bold">Portal de Empleos</h2>
