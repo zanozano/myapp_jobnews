@@ -42,17 +42,17 @@
   <div class="card custom-container-log col-6 col-lg-5">
     <div class="card-body">
           <h2 class="text-center fw-bold">Mis empleos</h2>
+
 <% if @user_jobs.present? %>
-  <!-- Mostrar la lista de empleos -->
   <ul>
     <% @user_jobs.each do |job| %>
       <li><%= job.title %></li>
     <% end %>
   </ul>
 <% else %>
-  <!-- Mostrar mensaje de validación -->
   <p>No tienes empleos guardados en tu lista.</p>
 <% end %>
+
 
     </div>
   </div>

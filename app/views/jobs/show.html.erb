@@ -21,7 +21,16 @@
       <div class="d-flex gap-2">
         <%= link_to "Volver", jobs_path, class: "btn btn-outline-primary" %>
         <% if user_signed_in? %>
-          <%= link_to "Aplicar al Empleo", edit_job_path(@job), class: "btn btn-success" %>
+         
+        <% if current_user.jobs.include?(@job) %>
+          <span class="btn btn-success disabled">Aplicado</span>
+        <% else %>
+<%= button_to "Aplicar al Empleo", job_apply_path(@job), method: :post, class: "btn btn-success" %>
+        <% end %>
+
+         
+
+
         <% end %>
         <% if current_user && current_user.admin? %>
           <%= link_to "Editar", edit_job_path(@job), class: "btn btn-primary" %>
