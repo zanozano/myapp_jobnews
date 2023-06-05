@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="mb-3 d-inline-block">
+  <h2 class="d-inline-block align-middle me-3 fw-bold">Portal de Empleos</h2>
+  <% if current_user && current_user.admin? %>
+    <%= link_to(new_job_path, class: "btn btn-success d-inline-block align-middle") { "Crear nuevo empleo" } %>
+  <% end %>
+</div>
+
+<div id="jobs" class="row">
+  <% @jobs.each do |job| %>
+    <div class="col-md-4">
+      <div class="card p-4 mb-4 custom-container">
+        <%= render job %>
+          <%= link_to "Ver Empleo", job, class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
